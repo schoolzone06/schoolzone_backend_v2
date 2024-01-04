@@ -1,7 +1,7 @@
 spring:
   config:
     import: classpath:env.yml
-
+#
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: ${db.url}
@@ -16,4 +16,4 @@ spring:
 server:
   port: ${port}
   servlet:
-    context-path: ${path}
+    context-path: ${context.path}
