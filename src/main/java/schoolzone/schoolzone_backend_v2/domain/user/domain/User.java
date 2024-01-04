@@ -21,5 +21,6 @@ public class User extends BaseTimeEntity {
     private School school;
 
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private Authority authority;
 }
