@@ -1,7 +1,7 @@
 spring:
   config:
     import: classpath:env.yml
-#
+
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: ${db.url}
@@ -17,3 +17,8 @@ server:
   port: ${port}
   servlet:
     context-path: ${context.path}
+
+jwt:
+  secretKey: ${jwt.secret-key}
+  accessTokenExp: ${jwt.access-token-exp}
+  refreshTokenExp: ${jwt.refresh-token-exp}
