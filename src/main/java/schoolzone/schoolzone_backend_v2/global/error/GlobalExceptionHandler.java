@@ -11,7 +11,7 @@ import schoolzone.schoolzone_backend_v2.global.error.exception.SchoolzoneExcepti
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(SchoolzoneException.class)
-    public ResponseEntity<ErrorResponse> nodamExceptionHandler(SchoolzoneException e) {
+    public ResponseEntity<ErrorResponse> schoolzoneExceptionHandler(SchoolzoneException e) {
         ErrorCode errorCode = e.getErrorCode();
 
         return ResponseEntity
