@@ -18,11 +18,11 @@ public class JwtProvider {
     private final JwtProperties jwtProperties;
 
     public String accessToken(String phoneNum) {
-        return createToken(phoneNum, jwtProperties.getAccessTokenExp(), ACCESS_TOKEN.getMessage());
+        return createToken(phoneNum, jwtProperties.accessTokenExp(), ACCESS_TOKEN.getMessage());
     }
 
     public String refreshToken(String phoneNum) {
-        return createToken(phoneNum, jwtProperties.getRefreshTokenExp(), REFRESH_TOKEN.getMessage());
+        return createToken(phoneNum, jwtProperties.refreshTokenExp(), REFRESH_TOKEN.getMessage());
     }
 
     private String createToken(String phoneNum, Long exp, String type) {
@@ -36,7 +36,7 @@ public class JwtProvider {
                 .setClaims(claims)
                 .setIssuedAt(now)
                 .setExpiration(new Date(now.getTime() + exp))
-                .signWith(jwtProperties.getSecretKey(), SignatureAlgorithm.HS256)
+                .signWith(jwtProperties.secretKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
 }
