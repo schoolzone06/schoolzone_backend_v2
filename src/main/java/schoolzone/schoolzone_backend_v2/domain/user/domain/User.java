@@ -23,4 +23,10 @@ public class User extends BaseTimeEntity {
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Authority authority;
+
+    @Column(nullable = false)
+    private Boolean verifiedByPhone;
+
+    @Column(nullable = false)
+    private Boolean verifiedByStudentIdOrLocation;
 }
