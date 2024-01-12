@@ -1,4 +1,4 @@
-package schoolzone.schoolzone_backend_v2.global.config;
+package schoolzone.schoolzone_backend_v2.global.swagger.config;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.models.OpenAPI;
