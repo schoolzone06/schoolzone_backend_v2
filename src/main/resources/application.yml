@@ -17,6 +17,8 @@ server:
   port: ${port}
   servlet:
     context-path: ${context.path}
+  path: ${server.path}
+  url: ${server.url}
 
 jwt:
   secretKey: ${jwt.secret-key}
