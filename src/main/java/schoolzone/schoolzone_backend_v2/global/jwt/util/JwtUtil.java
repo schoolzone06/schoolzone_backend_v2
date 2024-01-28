@@ -26,8 +26,18 @@ public class JwtUtil {
         return new UsernamePasswordAuthenticationToken(authDetails, token, authDetails.getAuthorities());
     }
 
-    public String resolveToken(HttpServletRequest request) {
+    public String resolveAccessToken(HttpServletRequest request) {
         String bearer = request.getHeader("Authorization");
+
+        if (bearer == null || !bearer.startsWith("Bearer ")) {
+            return null;
+        }
+
+        return bearer.split(" ")[1].trim();
+    }
+
+    public String resolveRefreshToken(HttpServletRequest request) {
+        String bearer = request.getHeader("Refresh");
 
         if (bearer == null || !bearer.startsWith("Bearer ")) {
             return null;
