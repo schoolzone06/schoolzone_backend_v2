@@ -1,4 +1,4 @@
-package schoolzone.schoolzone_backend_v2.domain.auth.service.implement;
+package schoolzone.schoolzone_backend_v2.domain.user.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -8,7 +8,7 @@ import schoolzone.schoolzone_backend_v2.domain.user.repository.UserRepository;
 
 @Service
 @RequiredArgsConstructor
-public class AuthSignupService {
+public class UserService {
 
     private final UserRepository userRepository;
 
