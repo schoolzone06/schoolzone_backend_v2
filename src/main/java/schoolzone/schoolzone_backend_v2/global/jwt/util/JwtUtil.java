@@ -11,6 +11,8 @@ import schoolzone.schoolzone_backend_v2.global.jwt.properties.JwtProperties;
 import schoolzone.schoolzone_backend_v2.global.security.auth.AuthDetails;
 import schoolzone.schoolzone_backend_v2.global.security.auth.AuthDetailsService;
 
+import static schoolzone.schoolzone_backend_v2.global.jwt.properties.JwtConstants.EMAIL;
+
 @Component
 @RequiredArgsConstructor
 public class JwtUtil {
@@ -19,7 +21,7 @@ public class JwtUtil {
     private final AuthDetailsService authDetailsService;
 
     public Authentication getAuthentication(String token) {
-        AuthDetails authDetails = (AuthDetails) authDetailsService.loadUserByUsername(extractPhoneNumber(token));
+        AuthDetails authDetails = (AuthDetails) authDetailsService.loadUserByUsername(extractEmail(token));
 
         return new UsernamePasswordAuthenticationToken(authDetails, token, authDetails.getAuthorities());
     }
@@ -42,7 +44,7 @@ public class JwtUtil {
                 .getBody();
     }
 
-    public String extractPhoneNumber(String token) {
-        return getClaims(token).get("phoneNum").toString();
+    public String extractEmail(String token) {
+        return getClaims(token).get(EMAIL.getMessage()).toString();
     }
 }

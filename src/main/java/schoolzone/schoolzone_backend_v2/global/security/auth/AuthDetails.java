@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import schoolzone.schoolzone_backend_v2.domain.user.domain.Authority;
 import schoolzone.schoolzone_backend_v2.domain.user.domain.User;
 
 import java.util.Collection;
@@ -28,7 +29,7 @@ public class AuthDetails implements UserDetails {
 
     @Override
     public String getUsername() {
-        return user.getPhoneNumber();
+        return user.getEmail();
     }
 
     @Override
@@ -48,6 +49,6 @@ public class AuthDetails implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return user.getVerifiedByPhone() && user.getVerifiedByStudentIdOrLocation();
+        return user.getAuthority() != Authority.UNVERIFIED_USER;
     }
 }

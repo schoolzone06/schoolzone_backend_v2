@@ -17,19 +17,19 @@ public class JwtProvider {
 
     private final JwtProperties jwtProperties;
 
-    public String accessToken(String phoneNum) {
-        return createToken(phoneNum, jwtProperties.accessTokenExp(), ACCESS_TOKEN.getMessage());
+    public String accessToken(String email) {
+        return createToken(email, jwtProperties.accessTokenExp(), ACCESS_TOKEN.getMessage());
     }
 
-    public String refreshToken(String phoneNum) {
-        return createToken(phoneNum, jwtProperties.refreshTokenExp(), REFRESH_TOKEN.getMessage());
+    public String refreshToken(String email) {
+        return createToken(email, jwtProperties.refreshTokenExp(), REFRESH_TOKEN.getMessage());
     }
 
-    private String createToken(String phoneNum, Long exp, String type) {
+    private String createToken(String email, Long exp, String type) {
         Date now = new Date();
 
         Claims claims = Jwts.claims();
-        claims.put(PHONE_NUMBER.getMessage(), phoneNum);
+        claims.put(EMAIL.getMessage(), email);
 
         return Jwts.builder()
                 .setHeaderParam(TYPE.getMessage(), type)

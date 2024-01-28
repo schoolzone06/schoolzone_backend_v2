@@ -1,13 +1,15 @@
 package schoolzone.schoolzone_backend_v2.domain.user.domain;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import schoolzone.schoolzone_backend_v2.global.entity.BaseTimeEntity;
 
 @Entity
 @Getter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class User extends BaseTimeEntity {
 
     @Id
@@ -15,7 +17,7 @@ public class User extends BaseTimeEntity {
     private Long id;
 
     @Column(nullable = false)
-    private String phoneNumber;
+    private String email;
 
     @Embedded
     private School school;
@@ -24,9 +26,24 @@ public class User extends BaseTimeEntity {
     @Enumerated(EnumType.STRING)
     private Authority authority;
 
-    @Column(nullable = false)
-    private Boolean verifiedByPhone;
+    @Builder
+    public User(String email, School school, Authority authority) {
+        this.email = email;
+        this.school = school;
+        this.authority = authority;
+    }
 
-    @Column(nullable = false)
-    private Boolean verifiedByStudentIdOrLocation;
+    public static User createUnverifiedUser(String email) {
+        return User.builder()
+                .email(email)
+                .school(null)
+                .authority(Authority.UNVERIFIED_USER)
+                .build();
+    }
+
+    public User verifyUser() {
+        this.authority = Authority.USER;
+
+        return this;
+    }
 }

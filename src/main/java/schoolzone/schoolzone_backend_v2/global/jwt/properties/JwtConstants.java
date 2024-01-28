@@ -9,7 +9,7 @@ public enum JwtConstants {
 
     TYPE("type"),
 
-    PHONE_NUMBER("phoneNum"),
+    EMAIL("email"),
 
     ACCESS_TOKEN("access_token"),
     REFRESH_TOKEN("refresh_token");
