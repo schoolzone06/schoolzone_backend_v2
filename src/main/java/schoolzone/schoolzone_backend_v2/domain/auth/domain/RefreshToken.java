@@ -14,10 +14,12 @@ import org.springframework.data.redis.core.index.Indexed;
 public class RefreshToken {
 
     @Id
-    private String phoneNumber;
+    private Long userId;
 
     @Indexed
     private String refreshToken;
+
+    private String accessToken;
 
     @TimeToLive
     private Long ttl;
