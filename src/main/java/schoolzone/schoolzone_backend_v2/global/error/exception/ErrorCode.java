@@ -10,6 +10,9 @@ public enum ErrorCode {
     // user
     USER_NOT_FOUND(404, "USER-404-1", "존재하지 않는 유저입니다."),
 
+    // authentication
+    AUTHENTICATION_NOT_FOUND(404, "AUTHENTICATION-404-1", "인증 요청 내역이 없습니다."),
+
     // jwt
     INVALID_TOKEN(403, "JWT-403-1", "잘못된 토큰입니다."),
     EXPIRED_TOKEN(403, "JWT-403-2", "토큰이 만료되었습니다."),

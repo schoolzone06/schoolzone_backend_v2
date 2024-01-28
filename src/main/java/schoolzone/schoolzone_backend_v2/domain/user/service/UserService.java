@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import schoolzone.schoolzone_backend_v2.domain.user.domain.User;
 import schoolzone.schoolzone_backend_v2.domain.user.repository.UserRepository;
+import schoolzone.schoolzone_backend_v2.global.error.exception.ErrorCode;
+import schoolzone.schoolzone_backend_v2.global.error.exception.SchoolzoneException;
 
 @Service
 @RequiredArgsConstructor
@@ -17,6 +19,12 @@ public class UserService {
         return userRepository.existsByEmail(email);
     }
 
+    @Transactional(readOnly = true)
+    public User findById(Long id) {
+        return userRepository.findById(id)
+                .orElseThrow(() -> new SchoolzoneException(ErrorCode.USER_NOT_FOUND));
+    }
+
     @Transactional
     public User createUser(String email) {
         return User.createUnverifiedUser(email);
@@ -25,5 +33,10 @@ public class UserService {
     @Transactional
     public Long saveUser(User user) {
         return userRepository.save(user).getId();
+    }
+
+    @Transactional
+    public Long verify(Long userId) {
+        return saveUser(findById(userId).verifyUser());
     }
 }

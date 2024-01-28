@@ -17,7 +17,6 @@ public class AuthController {
 
     private final AuthService authService;
 
-    // TODO: 1/28/24 verify StudentID (update account's state)
     @GetMapping("/verify")
     public ResponseEntity<List<Authentication>> findAll() {
         return ResponseEntity.ok(authService.findVerifyRequest());
@@ -26,6 +25,11 @@ public class AuthController {
     @PostMapping("/verify")
     public Long requestVerify(@RequestBody StudentIDVerityRequestDto dto) {
         return authService.saveVerifyRequest(dto);
+    }
+
+    @DeleteMapping("/verify/{id}")
+    public Long verify(@PathVariable Long id) {
+        return authService.verifyUser(id);
     }
 
     @PostMapping("/login/google")

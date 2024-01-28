@@ -43,5 +43,11 @@ public class AuthService {
         return authenticationService.create(dto.toEntity());
     }
 
+    public Long verifyUser(Long verifyId) {
+        Long userId = authenticationService.findById(verifyId).getUserId();
+        authenticationService.delete(verifyId);
+        return userService.verify(userId);
+    }
+
     // TODO: 1/28/24 logout / refresh token
 }
