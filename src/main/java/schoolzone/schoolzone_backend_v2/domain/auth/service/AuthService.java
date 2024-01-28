@@ -2,6 +2,7 @@ package schoolzone.schoolzone_backend_v2.domain.auth.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import schoolzone.schoolzone_backend_v2.domain.auth.presentation.dto.request.StudentIDVerityRequestDto;
 import schoolzone.schoolzone_backend_v2.domain.auth.presentation.dto.response.AuthLoginResponseDto;
 import schoolzone.schoolzone_backend_v2.domain.auth.service.implement.AuthGoogleLoginService;
 import schoolzone.schoolzone_backend_v2.domain.user.domain.User;
@@ -15,6 +16,7 @@ public class AuthService {
     private final UserService userService;
     private final AuthGoogleLoginService authGoogleLoginService;
     private final JwtProvider jwtProvider;
+    private final AuthenticationService authenticationService;
 
     public AuthLoginResponseDto googleLogin(String code) {
         String email = authGoogleLoginService.login(code);
@@ -28,6 +30,10 @@ public class AuthService {
                 jwtProvider.accessToken(email),
                 jwtProvider.refreshToken(email)
         );
+    }
+
+    public Long saveVerifyRequest(StudentIDVerityRequestDto dto) {
+        return authenticationService.create(dto.toEntity());
     }
 
     // TODO: 1/28/24 logout / refresh token
