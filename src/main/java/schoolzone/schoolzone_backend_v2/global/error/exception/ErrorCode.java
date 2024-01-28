@@ -15,7 +15,11 @@ public enum ErrorCode {
     EXPIRED_TOKEN(403, "JWT-403-2", "토큰이 만료되었습니다."),
 
     // server
-    INTERNAL_SERVER_ERROR(500, "SERVER-500-1", "서버 에러");
+    INTERNAL_SERVER_ERROR(500, "SERVER-500-1", "서버 에러"),
+
+    // file
+    FILE_SAVE_ERROR(500, "FILE-500-1", "파일 저장 중 오류가 발생했습니다."),
+    FILE_NOT_FOUND(404, "FILE-404-1", "파일을 찾을 수 없습니다.");
 
     private final int status;
     private final String code;
