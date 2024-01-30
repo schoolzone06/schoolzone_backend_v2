@@ -20,7 +20,7 @@ public class AuthController {
     private final AuthService authService;
 
     @GetMapping("/verify")
-    public ResponseEntity<List<Authentication>> findAll() {
+    public ResponseEntity<List<Authentication>> findVerifyRequestAll() {
         return ResponseEntity.ok(authService.findVerifyRequest());
     }
 
