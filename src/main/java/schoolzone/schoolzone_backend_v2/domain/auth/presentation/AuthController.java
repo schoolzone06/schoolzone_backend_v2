@@ -1,11 +1,13 @@
 package schoolzone.schoolzone_backend_v2.domain.auth.presentation;
 
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import schoolzone.schoolzone_backend_v2.domain.auth.domain.Authentication;
 import schoolzone.schoolzone_backend_v2.domain.auth.presentation.dto.request.StudentIDVerityRequestDto;
 import schoolzone.schoolzone_backend_v2.domain.auth.presentation.dto.response.AuthLoginResponseDto;
+import schoolzone.schoolzone_backend_v2.domain.auth.presentation.dto.response.ReissueTokenResponseDto;
 import schoolzone.schoolzone_backend_v2.domain.auth.service.AuthService;
 
 import java.util.List;
@@ -38,4 +40,8 @@ public class AuthController {
     }
 
     // TODO: 1/28/24 logout / refresh token
+    @PutMapping("/reissue")
+    public ReissueTokenResponseDto reissueAccessToken(HttpServletRequest request) {
+        return authService.reissueAccessToken(request);
+    }
 }

@@ -1,6 +1,7 @@
 package schoolzone.schoolzone_backend_v2.domain.user.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import schoolzone.schoolzone_backend_v2.domain.user.domain.User;
@@ -23,6 +24,19 @@ public class UserService {
     public User findById(Long id) {
         return userRepository.findById(id)
                 .orElseThrow(() -> new SchoolzoneException(ErrorCode.USER_NOT_FOUND));
+    }
+
+    @Transactional(readOnly = true)
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email)
+                .orElseThrow(() -> new SchoolzoneException(ErrorCode.USER_NOT_FOUND));
+    }
+
+    @Transactional(readOnly = true)
+    public User findCurrentUser() {
+        return findByEmail(
+                SecurityContextHolder.getContext().getAuthentication().getName()
+        );
     }
 
     @Transactional
