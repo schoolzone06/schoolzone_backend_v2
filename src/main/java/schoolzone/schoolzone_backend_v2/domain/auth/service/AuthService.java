@@ -68,4 +68,8 @@ public class AuthService {
 
         return new ReissueTokenResponseDto(jwtProvider.accessToken(email));
     }
+
+    public Long logout() {
+        return refreshTokenService.delete();
+    }
 }

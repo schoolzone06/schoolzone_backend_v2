@@ -39,9 +39,13 @@ public class AuthController {
         return authService.googleLogin(code);
     }
 
-    // TODO: 1/28/24 logout / refresh token
     @PutMapping("/reissue")
     public ReissueTokenResponseDto reissueAccessToken(HttpServletRequest request) {
         return authService.reissueAccessToken(request);
+    }
+
+    @DeleteMapping("/logout")
+    public Long logout() {
+        return authService.logout();
     }
 }

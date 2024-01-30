@@ -22,4 +22,11 @@ public class RefreshTokenService {
         return refreshTokenRepository.findById(userId)
                 .orElseThrow(() -> new SchoolzoneException(ErrorCode.REFRESH_TOKEN_NOT_FOUND));
     }
+
+    @Transactional
+    public Long delete() {
+        Long userId = userService.findCurrentUser().getId();
+        refreshTokenRepository.deleteById(userId);
+        return userId;
+    }
 }
