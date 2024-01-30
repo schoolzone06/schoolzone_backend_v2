@@ -37,9 +37,14 @@ public class AuthService {
             this.userService.saveUser(user);
         }
 
+        Long userId = userService.findByEmail(email).getId();
+        String accessToken = jwtProvider.accessToken(email);
+        String refreshToken = jwtProvider.refreshToken(email);
+
+        refreshTokenService.save(userId, accessToken, refreshToken);
+
         return new AuthLoginResponseDto(
-                jwtProvider.accessToken(email),
-                jwtProvider.refreshToken(email)
+                accessToken, refreshToken
         );
     }
 
