@@ -19,24 +19,28 @@ public class User extends BaseTimeEntity {
     @Column(nullable = false)
     private String email;
 
-    @Embedded
-    private School school;
+    private String schoolName;
+
+    private Integer grade;
+
+    private Integer classNumber;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Authority authority;
 
     @Builder
-    public User(String email, School school, Authority authority) {
+    public User(String email, String schoolName, Integer grade, Integer classNumber, Authority authority) {
         this.email = email;
-        this.school = school;
+        this.schoolName = schoolName;
+        this.grade = grade;
+        this.classNumber = classNumber;
         this.authority = authority;
     }
 
     public static User createUnverifiedUser(String email) {
         return User.builder()
                 .email(email)
-                .school(null)
                 .authority(Authority.UNVERIFIED_USER)
                 .build();
     }
