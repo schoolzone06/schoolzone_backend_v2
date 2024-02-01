@@ -20,7 +20,7 @@ public class AuthGoogleLoginService {
                 new GoogleTokenRequest(
                         googleOAuthProperties.clientId(),
                         googleOAuthProperties.clientSecret(),
-                        code,
+                        code.replace("%2f", "/"),
                         googleOAuthProperties.grantType(),
                         googleOAuthProperties.redirectUri()
                 )
