@@ -26,4 +26,8 @@ public class PostService {
         Post post = postGetService.findOne(postId);
         return postSaveService.update(post, dto);
     }
+
+    public Long delete(Long postId) {
+        return postSaveService.delete(postId);
+    }
 }

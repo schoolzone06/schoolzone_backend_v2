@@ -25,4 +25,9 @@ public class PostSaveService {
     public Long update(Post post, PostUpdateRequestDto dto) {
         return save(post.update(dto)).getId();
     }
+
+    public Long delete(Long postId) {
+        postRepository.deleteById(postId);
+        return postId;
+    }
 }
