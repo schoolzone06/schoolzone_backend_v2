@@ -4,21 +4,19 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import schoolzone.schoolzone_backend_v2.domain.post.domain.Post;
-import schoolzone.schoolzone_backend_v2.domain.post.presentation.dto.request.PostUpdateRequestDto;
 import schoolzone.schoolzone_backend_v2.domain.post.repository.PostRepository;
+import schoolzone.schoolzone_backend_v2.global.error.exception.ErrorCode;
+import schoolzone.schoolzone_backend_v2.global.error.exception.SchoolzoneException;
 
 @Service
 @RequiredArgsConstructor
-@Transactional
-public class PostSaveService {
+@Transactional(readOnly = true)
+public class PostGetService {
 
     private final PostRepository postRepository;
 
-    public Long create(Post post) {
-        return postRepository.save(post).getId();
-    }
-
-    public Long update(Post post, PostUpdateRequestDto dto) {
-        return postRepository.save(post.update(dto)).getId();
+    public Post findOne(Long postId) {
+        return postRepository.findById(postId)
+                .orElseThrow(() -> new SchoolzoneException(ErrorCode.POST_NOT_FOUND));
     }
 }

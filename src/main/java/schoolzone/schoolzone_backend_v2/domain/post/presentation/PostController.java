@@ -1,12 +1,10 @@
 package schoolzone.schoolzone_backend_v2.domain.post.presentation;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import schoolzone.schoolzone_backend_v2.domain.post.application.PostService;
 import schoolzone.schoolzone_backend_v2.domain.post.presentation.dto.request.PostCreateRequestDto;
+import schoolzone.schoolzone_backend_v2.domain.post.presentation.dto.request.PostUpdateRequestDto;
 
 @RestController
 @RequestMapping("/post")
@@ -18,5 +16,11 @@ public class PostController {
     @PostMapping
     public Long createPost(@RequestBody PostCreateRequestDto dto) {
         return postService.create(dto);
+    }
+
+    @PutMapping("/{postId}")
+    public Long updatePost(@PathVariable Long postId,
+                           @RequestBody PostUpdateRequestDto dto) {
+        return postService.update(postId, dto);
     }
 }
