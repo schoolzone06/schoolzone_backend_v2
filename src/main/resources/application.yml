@@ -2,6 +2,12 @@ spring:
   config:
     import: classpath:env.yml
 
+  data:
+    redis:
+      host: ${redis.host}
+      port: ${redis.port}
+      password: ${redis.password}
+
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: ${db.url}
@@ -24,3 +30,10 @@ jwt:
   secretKey: ${jwt.secret-key}
   accessTokenExp: ${jwt.access-token-exp}
   refreshTokenExp: ${jwt.refresh-token-exp}
+
+oauth:
+  google:
+    client-id: ${oauth.google.client-id}
+    client-secret: ${oauth.google.client-secret}
+    grant-type: ${oauth.google.grant-type}
+    redirect-uri: ${oauth.google.redirect-uri}

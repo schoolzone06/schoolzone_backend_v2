@@ -17,26 +17,26 @@ public class JwtProvider {
 
     private final JwtProperties jwtProperties;
 
-    public String accessToken(Long userId) {
-        return createToken(userId, jwtProperties.getAccessTokenExp(), ACCESS_TOKEN.getMessage());
+    public String accessToken(String email) {
+        return createToken(email, jwtProperties.accessTokenExp(), ACCESS_TOKEN.getMessage());
     }
 
-    public String refreshToken(Long userId) {
-        return createToken(userId, jwtProperties.getRefreshTokenExp(), REFRESH_TOKEN.getMessage());
+    public String refreshToken(String email) {
+        return createToken(email, jwtProperties.refreshTokenExp(), REFRESH_TOKEN.getMessage());
     }
 
-    private String createToken(Long userId, Long exp, String type) {
+    private String createToken(String email, Long exp, String type) {
         Date now = new Date();
 
         Claims claims = Jwts.claims();
-        claims.put(USER_ID.getMessage(), userId);
+        claims.put(EMAIL.getMessage(), email);
 
         return Jwts.builder()
                 .setHeaderParam(TYPE.getMessage(), type)
                 .setClaims(claims)
                 .setIssuedAt(now)
                 .setExpiration(new Date(now.getTime() + exp))
-                .signWith(jwtProperties.getSecretKey(), SignatureAlgorithm.HS256)
+                .signWith(jwtProperties.secretKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
 }
