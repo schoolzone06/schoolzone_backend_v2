@@ -14,11 +14,15 @@ public class PostSaveService {
 
     private final PostRepository postRepository;
 
+    private Post save(Post post) {
+        return postRepository.save(post);
+    }
+
     public Long create(Post post) {
-        return postRepository.save(post).getId();
+        return save(post).getId();
     }
 
     public Long update(Post post, PostUpdateRequestDto dto) {
-        return postRepository.save(post.update(dto)).getId();
+        return save(post.update(dto)).getId();
     }
 }
