@@ -22,7 +22,7 @@ public class CommentService {
     public Long create(CommentCreateRequestDto dto) {
         Long userId = userService.findCurrentUser().getId();
         Long postAuthorId = postService.findPostDetail(dto.postId()).getAuthorId();
-        Long commentCount = commentGetService.commentCount();
+        Long commentCount = commentGetService.commentCount(dto.postId());
         String nickname = commentSaveService.generateNickname(userId, postAuthorId, commentCount);
 
         return commentSaveService.create(userId, nickname, dto);

@@ -15,8 +15,8 @@ public class CommentGetService {
 
     private final CommentRepository commentRepository;
 
-    public long commentCount() {
-        return commentRepository.count();
+    public long commentCount(Long postId) {
+        return commentRepository.countByPostId(postId);
     }
 
     public Comment findOne(Long commentId) {
