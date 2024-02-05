@@ -24,6 +24,10 @@ public class PostService {
         return postGetService.findByCategory(category, index, count);
     }
 
+    public Post findPostDetail(Long postId) {
+        return postGetService.findOne(postId);
+    }
+
     public Long create(PostCreateRequestDto dto) {
         Long authorId = userService.findCurrentUser().getId();
         return postSaveService.create(dto.toEntity(authorId));
