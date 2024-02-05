@@ -24,6 +24,9 @@ public enum ErrorCode {
     // post
     POST_NOT_FOUND(404, "POST-404-1", "게시물을 찾을 수 없습니다."),
 
+    // comment
+    COMMENT_NOT_FOUND(404, "COMMENT-404-1", "댓글을 찾을 수 없습니다."),
+
     // server
     INTERNAL_SERVER_ERROR(500, "SERVER-500-1", "서버 에러"),
 

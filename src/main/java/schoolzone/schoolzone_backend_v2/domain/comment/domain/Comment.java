@@ -2,6 +2,7 @@ package schoolzone.schoolzone_backend_v2.domain.comment.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import schoolzone.schoolzone_backend_v2.domain.comment.presentation.dto.request.CommentUpdateRequestDto;
 import schoolzone.schoolzone_backend_v2.global.entity.BaseTimeEntity;
 
 @Entity
@@ -23,4 +24,10 @@ public class Comment extends BaseTimeEntity {
 
     @Column(nullable = false)
     private String content;
+
+    public Comment update(CommentUpdateRequestDto dto) {
+        this.content = dto.content();
+
+        return this;
+    }
 }

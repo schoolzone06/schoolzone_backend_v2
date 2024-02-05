@@ -1,11 +1,9 @@
 package schoolzone.schoolzone_backend_v2.domain.comment.presentation;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import schoolzone.schoolzone_backend_v2.domain.comment.presentation.dto.request.CommentCreateRequestDto;
+import schoolzone.schoolzone_backend_v2.domain.comment.presentation.dto.request.CommentUpdateRequestDto;
 import schoolzone.schoolzone_backend_v2.domain.comment.service.CommentService;
 
 @RestController
@@ -18,5 +16,11 @@ public class CommentController {
     @PostMapping
     public Long createComment(@RequestBody CommentCreateRequestDto dto) {
         return commentService.create(dto);
+    }
+
+    @PutMapping("/{commentId}")
+    public Long updateComment(@PathVariable Long commentId,
+                              @RequestBody CommentUpdateRequestDto dto) {
+        return commentService.update(commentId, dto);
     }
 }
