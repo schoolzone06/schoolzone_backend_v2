@@ -22,7 +22,7 @@ public class PostController {
     public ResponseEntity<Page<PostListResponseDto>> findPostList(@RequestParam Category category,
                                                                   @RequestParam(required = false, defaultValue = "0") int index,
                                                                   @RequestParam int count) {
-        return ResponseEntity.ok(postService.findByType(category, index, count));
+        return ResponseEntity.ok(postService.findByCategory(category, index, count));
     }
 
     @GetMapping("/{postId}")

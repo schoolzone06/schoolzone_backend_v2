@@ -20,7 +20,7 @@ public class PostService {
     private final PostSaveService postSaveService;
     private final UserService userService;
 
-    public Page<PostListResponseDto> findByType(Category category, int index, int count) {
+    public Page<PostListResponseDto> findByCategory(Category category, int index, int count) {
         return postGetService.findByCategory(category, index, count);
     }
 
