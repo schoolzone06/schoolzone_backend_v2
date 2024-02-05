@@ -7,6 +7,7 @@ import schoolzone.schoolzone_backend_v2.domain.comment.presentation.dto.request.
 import schoolzone.schoolzone_backend_v2.domain.comment.presentation.dto.request.CommentUpdateRequestDto;
 import schoolzone.schoolzone_backend_v2.domain.comment.service.implement.CommentGetService;
 import schoolzone.schoolzone_backend_v2.domain.comment.service.implement.CommentSaveService;
+import schoolzone.schoolzone_backend_v2.domain.post.application.PostService;
 import schoolzone.schoolzone_backend_v2.domain.user.service.UserService;
 
 @Service
@@ -16,10 +17,15 @@ public class CommentService {
     private final CommentGetService commentGetService;
     private final CommentSaveService commentSaveService;
     private final UserService userService;
+    private final PostService postService;
 
     public Long create(CommentCreateRequestDto dto) {
         Long userId = userService.findCurrentUser().getId();
-        return commentSaveService.create(userId, dto);
+        Long postAuthorId = postService.findPostDetail(dto.postId()).getAuthorId();
+        Long commentCount = commentGetService.commentCount();
+        String nickname = commentSaveService.generateNickname(userId, postAuthorId, commentCount);
+
+        return commentSaveService.create(userId, nickname, dto);
     }
 
     public Long update(Long commentId, CommentUpdateRequestDto dto) {

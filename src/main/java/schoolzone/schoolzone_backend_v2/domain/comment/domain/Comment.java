@@ -25,6 +25,9 @@ public class Comment extends BaseTimeEntity {
     @Column(nullable = false)
     private String content;
 
+    @Column(nullable = false)
+    private String nickname;
+
     public Comment update(CommentUpdateRequestDto dto) {
         this.content = dto.content();
 
