@@ -23,4 +23,9 @@ public class CommentController {
                               @RequestBody CommentUpdateRequestDto dto) {
         return commentService.update(commentId, dto);
     }
+
+    @DeleteMapping("/{commentId}")
+    public Long deleteComment(@PathVariable Long commentId) {
+        return commentService.delete(commentId);
+    }
 }

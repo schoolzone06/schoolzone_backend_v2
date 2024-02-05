@@ -23,6 +23,11 @@ public class CommentSaveService {
         return save(comment.update(dto));
     }
 
+    public Long delete(Long commentId) {
+        commentRepository.deleteById(commentId);
+        return commentId;
+    }
+
     private Long save(Comment comment) {
         return commentRepository.save(comment).getId();
     }

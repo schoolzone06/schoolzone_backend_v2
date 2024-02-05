@@ -26,4 +26,8 @@ public class CommentService {
         Comment comment = commentGetService.findOne(commentId);
         return commentSaveService.update(comment, dto);
     }
+
+    public Long delete(Long commentId) {
+        return commentSaveService.delete(commentId);
+    }
 }
