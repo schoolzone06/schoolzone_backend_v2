@@ -1,10 +1,12 @@
 package schoolzone.schoolzone_backend_v2.domain.comment.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import schoolzone.schoolzone_backend_v2.domain.comment.domain.Comment;
 import schoolzone.schoolzone_backend_v2.domain.comment.presentation.dto.request.CommentCreateRequestDto;
 import schoolzone.schoolzone_backend_v2.domain.comment.presentation.dto.request.CommentUpdateRequestDto;
+import schoolzone.schoolzone_backend_v2.domain.comment.presentation.dto.response.CommentListResponseDto;
 import schoolzone.schoolzone_backend_v2.domain.comment.service.implement.CommentGetService;
 import schoolzone.schoolzone_backend_v2.domain.comment.service.implement.CommentSaveService;
 import schoolzone.schoolzone_backend_v2.domain.post.application.PostService;
@@ -18,6 +20,10 @@ public class CommentService {
     private final CommentSaveService commentSaveService;
     private final UserService userService;
     private final PostService postService;
+
+    public Page<CommentListResponseDto> findByPostId(Long postId, int index, int count) {
+        return commentGetService.findByPostId(postId, index, count);
+    }
 
     public Long create(CommentCreateRequestDto dto) {
         Long userId = userService.findCurrentUser().getId();
