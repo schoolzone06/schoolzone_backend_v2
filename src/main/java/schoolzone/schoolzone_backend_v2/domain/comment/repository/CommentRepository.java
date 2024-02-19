@@ -9,7 +9,17 @@ import schoolzone.schoolzone_backend_v2.domain.comment.presentation.dto.response
 
 public interface CommentRepository extends JpaRepository<Comment, Long> {
 
-    Long countByPostId(Long postId);
+    @Query(
+            "SELECT COUNT(c.id) " +
+            "FROM Comment c " +
+                    "LEFT JOIN Reply r ON c.id = r.commentId " +
+            "WHERE " +
+                    "c.postId = :postId " +
+                    "AND " +
+                    "c.userId != :authorId " +
+            "GROUP BY c.id "
+    )
+    Long countByPostId(Long authorId, Long postId);
 
     @Query(
             "SELECT new schoolzone.schoolzone_backend_v2.domain.comment.presentation.dto.response.CommentListResponseDto( " +

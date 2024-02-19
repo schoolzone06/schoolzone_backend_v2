@@ -8,8 +8,6 @@ import schoolzone.schoolzone_backend_v2.domain.comment.presentation.dto.request.
 import schoolzone.schoolzone_backend_v2.domain.comment.presentation.dto.request.CommentUpdateRequestDto;
 import schoolzone.schoolzone_backend_v2.domain.comment.repository.CommentRepository;
 
-import java.util.Objects;
-
 @Service
 @RequiredArgsConstructor
 @Transactional
@@ -32,13 +30,5 @@ public class CommentSaveService {
 
     private Long save(Comment comment) {
         return commentRepository.save(comment).getId();
-    }
-
-    public String generateNickname(Long userId, Long postAuthorId, Long commentCount) {
-        if (Objects.equals(userId, postAuthorId)) {
-            return "작성자";
-        }
-
-        return "익명" + commentCount + 1L;
     }
 }
