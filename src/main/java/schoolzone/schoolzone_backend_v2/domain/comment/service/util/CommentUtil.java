@@ -21,6 +21,6 @@ public class CommentUtil {
             return "작성자";
         }
 
-        return "익명" + commentCount + 1L;
+        return "익명" + (commentCount + 1L);
     }
 }
