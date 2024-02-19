@@ -37,7 +37,7 @@ public class CommentService {
     }
 
     public Long update(Long commentId, CommentUpdateRequestDto dto) {
-        Comment comment = commentGetService.findOne(commentId);
+        Comment comment = commentGetService.findByCommentId(commentId);
         return commentSaveService.update(comment, dto);
     }
 

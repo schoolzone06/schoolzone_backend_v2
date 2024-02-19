@@ -18,7 +18,7 @@ public class CommentGetService {
 
     private final CommentRepository commentRepository;
 
-    public Comment findOne(Long commentId) {
+    public Comment findByCommentId(Long commentId) {
         return commentRepository.findById(commentId)
                 .orElseThrow(() -> new SchoolzoneException(ErrorCode.COMMENT_NOT_FOUND));
     }
