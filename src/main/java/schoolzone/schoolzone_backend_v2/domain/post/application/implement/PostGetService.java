@@ -19,7 +19,7 @@ public class PostGetService {
 
     private final PostRepository postRepository;
 
-    public Post findOne(Long postId) {
+    public Post findByPostId(Long postId) {
         return postRepository.findById(postId)
                 .orElseThrow(() -> new SchoolzoneException(ErrorCode.POST_NOT_FOUND));
     }

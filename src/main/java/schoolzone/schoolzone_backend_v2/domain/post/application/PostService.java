@@ -25,7 +25,7 @@ public class PostService {
     }
 
     public Post findPostDetail(Long postId) {
-        return postGetService.findOne(postId);
+        return postGetService.findByPostId(postId);
     }
 
     public Long create(PostCreateRequestDto dto) {
@@ -34,7 +34,7 @@ public class PostService {
     }
 
     public Long update(Long postId, PostUpdateRequestDto dto) {
-        Post post = postGetService.findOne(postId);
+        Post post = postGetService.findByPostId(postId);
         return postSaveService.update(post, dto);
     }
 
