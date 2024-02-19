@@ -27,6 +27,10 @@ public class CommentService {
         return commentGetService.findByPostId(postId, index, count);
     }
 
+    public Comment findByCommentId(Long commentId) {
+        return commentGetService.findByCommentId(commentId);
+    }
+
     public Long create(CommentCreateRequestDto dto) {
         Long userId = userService.findCurrentUser().getId();
         Long postAuthorId = postService.findPostDetail(dto.postId()).getAuthorId();

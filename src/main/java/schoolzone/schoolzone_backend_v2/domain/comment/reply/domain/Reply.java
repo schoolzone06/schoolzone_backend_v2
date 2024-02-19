@@ -2,6 +2,7 @@ package schoolzone.schoolzone_backend_v2.domain.comment.reply.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import schoolzone.schoolzone_backend_v2.domain.comment.reply.presentation.dto.request.ReplyUpdateRequestDto;
 
 @Entity
 @Getter
@@ -25,4 +26,10 @@ public class Reply {
 
     @Column(nullable = false)
     private String nickname;
+
+    public Reply update(ReplyUpdateRequestDto dto) {
+        this.content = dto.content();
+
+        return this;
+    }
 }
