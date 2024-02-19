@@ -23,4 +23,8 @@ public class ReplyService {
         Reply reply = replyGetService.findByReplyId(id);
         return replySaveService.update(reply, dto);
     }
+
+    public Long delete(Long id) {
+        return replySaveService.delete(id);
+    }
 }

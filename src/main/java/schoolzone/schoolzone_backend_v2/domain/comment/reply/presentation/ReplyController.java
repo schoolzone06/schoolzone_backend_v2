@@ -23,4 +23,9 @@ public class ReplyController {
                             @RequestBody ReplyUpdateRequestDto dto) {
         return replyService.update(id, dto);
     }
+
+    @DeleteMapping("/{id}")
+    public Long deleteReply(@PathVariable Long id) {
+        return replyService.delete(id);
+    }
 }

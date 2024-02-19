@@ -36,6 +36,11 @@ public class ReplySaveService {
         return save(reply.update(dto)).getId();
     }
 
+    public Long delete(Long id) {
+        replyRepository.deleteById(id);
+        return id;
+    }
+
     private Reply save(Reply reply) {
         return replyRepository.save(reply);
     }
