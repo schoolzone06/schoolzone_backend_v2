@@ -8,12 +8,18 @@ import schoolzone.schoolzone_backend_v2.domain.comment.reply.presentation.dto.re
 import schoolzone.schoolzone_backend_v2.domain.comment.reply.service.implement.ReplyGetService;
 import schoolzone.schoolzone_backend_v2.domain.comment.reply.service.implement.ReplySaveService;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ReplyService {
 
     private final ReplyGetService replyGetService;
     private final ReplySaveService replySaveService;
+
+    public List<Reply> findByCommentId(Long commentId) {
+        return replyGetService.findByCommentId(commentId);
+    }
 
     public Long create(ReplyCreateRequestDto dto) {
         return replySaveService.create(dto);
