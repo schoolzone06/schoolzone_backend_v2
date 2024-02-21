@@ -10,14 +10,15 @@ import schoolzone.schoolzone_backend_v2.domain.comment.presentation.dto.response
 public interface CommentRepository extends JpaRepository<Comment, Long> {
 
     @Query(
-            "SELECT COUNT(c.id) " +
-            "FROM Comment c " +
-                    "LEFT JOIN Reply r ON c.id = r.commentId " +
-            "WHERE " +
-                    "c.postId = :postId " +
-                    "AND " +
-                    "c.userId != :authorId " +
-            "GROUP BY c.id "
+            value =
+            "select count(distinct nickname) " +
+            "from ( " +
+                    "select c.nickname as nickname, c.user_id as user_id, c.post_id from comment c " +
+                    "union " +
+                    "select r.nickname as nickname, r.user_id as user_id, null from reply r " +
+            ") as combined_comment_reply " +
+            "where nickname != '작성자' and post_id = :postId and user_id != :authorId ",
+            nativeQuery = true
     )
     Long countByPostId(Long authorId, Long postId);
 
@@ -29,7 +30,7 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
                     "LEFT JOIN CommentLike cl ON c.id = cl.commentId " +
                     "LEFT JOIN Reply r ON c.id = r.commentId " +
             "WHERE c.postId = :postId " +
-            "GROUP BY c.id, c.nickname, c.content, c.createdAt, cl.id, r.id " +
+            "GROUP BY c.id, c.nickname, c.content, c.createdAt " +
             "ORDER BY c.id DESC "
     )
     Page<CommentListResponseDto> findByPostId(Long postId, Pageable pageable);

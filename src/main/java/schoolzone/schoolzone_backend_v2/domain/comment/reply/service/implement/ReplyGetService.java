@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import schoolzone.schoolzone_backend_v2.domain.comment.reply.domain.Reply;
+import schoolzone.schoolzone_backend_v2.domain.comment.reply.presentation.dto.response.ReplyListGetResponseDto;
 import schoolzone.schoolzone_backend_v2.domain.comment.reply.repository.ReplyRepository;
 import schoolzone.schoolzone_backend_v2.global.error.exception.ErrorCode;
 import schoolzone.schoolzone_backend_v2.global.error.exception.SchoolzoneException;
@@ -22,7 +23,7 @@ public class ReplyGetService {
                 .orElseThrow(() -> new SchoolzoneException(ErrorCode.REPLY_NOT_FOUND));
     }
 
-    public List<Reply> findByCommentId(Long commentId) {
+    public List<ReplyListGetResponseDto> findByCommentId(Long commentId) {
         return replyRepository.findByCommentId(commentId);
     }
 }
