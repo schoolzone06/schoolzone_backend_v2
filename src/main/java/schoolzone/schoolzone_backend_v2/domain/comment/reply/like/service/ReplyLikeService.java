@@ -26,6 +26,7 @@ public class ReplyLikeService {
     }
 
     public void cancelLike(Long replyId) {
-        replyLikeRepository.deleteByReplyId(replyId);
+        Long userId = userService.findCurrentUser().getId();
+        replyLikeRepository.deleteByReplyIdAndUserId(replyId, userId);
     }
 }

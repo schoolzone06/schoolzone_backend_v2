@@ -5,5 +5,5 @@ import schoolzone.schoolzone_backend_v2.domain.comment.reply.like.domain.ReplyLi
 
 public interface ReplyLikeRepository extends JpaRepository<ReplyLike, Long> {
 
-    void deleteByReplyId(Long replyId);
+    void deleteByReplyIdAndUserId(Long replyId, Long userId);
 }
