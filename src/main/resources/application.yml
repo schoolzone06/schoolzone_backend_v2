@@ -37,3 +37,9 @@ oauth:
     client-secret: ${oauth.google.client-secret}
     grant-type: ${oauth.google.grant-type}
     redirect-uri: ${oauth.google.redirect-uri}
+
+school:
+  key: ${school.key}
+  type: ${school.type}
+  pIndex: ${school.pIndex}
+  pSize: ${school.pSize}
