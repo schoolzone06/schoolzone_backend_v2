@@ -13,10 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: test
-        run: |
-          echo "Trick to echo GitHub Actions Secret:  "
-          echo ${{ secrets.WAS_HOST }} | sed 's/./& /g'
 
       # 1. Java 17 세팅
       - name: Set up JDK 17
