@@ -15,10 +15,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: test
         run: |
-          echo "The GitHub Action Secret will be masked:  "
-          echo ${{ secrets.WAS_HOST }}
           echo "Trick to echo GitHub Actions Secret:  "
-          echo ${{ secrets.WAS_USERNAME }} | sed 's/./& /g'
+          echo ${{ secrets.WAS_HOST }} | sed 's/./& /g'
 
       # 1. Java 17 세팅
       - name: Set up JDK 17
