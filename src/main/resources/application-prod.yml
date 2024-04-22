@@ -1,0 +1,42 @@
+spring:
+  data:
+    redis:
+      host: ${redis.host}
+      port: ${redis.port}
+      password: ${redis.password}
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${db.url}
+    username: ${db.username}
+    password: ${db.password}
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+server:
+  port: ${port}
+  servlet:
+    context-path: ${context.path}
+  path: ${server.path}
+  url: ${server.url}
+
+jwt:
+  secretKey: ${jwt.secret-key}
+  accessTokenExp: ${jwt.access-token-exp}
+  refreshTokenExp: ${jwt.refresh-token-exp}
+
+oauth:
+  google:
+    client-id: ${oauth.google.client-id}
+    client-secret: ${oauth.google.client-secret}
+    grant-type: ${oauth.google.grant-type}
+    redirect-uri: ${oauth.google.redirect-uri}
+
+school:
+  key: ${school.key}
+  type: ${school.type}
+  pIndex: ${school.pIndex}
+  pSize: ${school.pSize}
