@@ -13,6 +13,6 @@ public class CommandFileService {
     private final FileCreator fileCreator;
 
     public String create(MultipartFile file) {
-        return fileCreator.uploadFile(file);
+        return fileCreator.upload(file);
     }
 }

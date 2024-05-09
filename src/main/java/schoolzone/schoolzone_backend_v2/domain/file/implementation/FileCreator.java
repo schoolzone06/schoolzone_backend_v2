@@ -16,11 +16,11 @@ import java.util.UUID;
 public class FileCreator {
     private final FileProperties fileProperties;
 
-    public String uploadFile(MultipartFile file) {
-        return fileProperties.serverUrl() + saveFile(file);
+    public String upload(MultipartFile file) {
+        return fileProperties.serverUrl() + save(file);
     }
 
-    private String saveFile(MultipartFile file) {
+    private String save(MultipartFile file) {
         String filename = UUID.randomUUID() + file.getOriginalFilename();
         Path path = fileProperties.path().resolve(filename);
         try {
