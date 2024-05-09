@@ -1,5 +1,6 @@
 package schoolzone.schoolzone_backend_v2.global.security.auth;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -10,6 +11,7 @@ import schoolzone.schoolzone_backend_v2.domain.user.domain.User;
 import java.util.Collection;
 import java.util.Collections;
 
+@Getter
 @RequiredArgsConstructor
 public class AuthDetails implements UserDetails {
 
