@@ -35,7 +35,8 @@ public enum ErrorCode {
 
     // file
     FILE_SAVE_ERROR(500, "FILE-500-1", "파일 저장 중 오류가 발생했습니다."),
-    FILE_NOT_FOUND(404, "FILE-404-1", "파일을 찾을 수 없습니다.");
+    FILE_NOT_FOUND(404, "FILE-404-1", "파일을 찾을 수 없습니다."),
+    INVALID_URL_FORMAT(400, "FILE-400-1", "유효하지 않은 URL 형식입니다");
 
     private final int status;
     private final String code;
