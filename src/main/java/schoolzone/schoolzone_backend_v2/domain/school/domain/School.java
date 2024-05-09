@@ -5,8 +5,8 @@ import lombok.*;
 
 @Entity
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Builder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class School {
     @Id
@@ -16,7 +16,8 @@ public class School {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @Column
+    @Column(nullable = false, unique = true)
     private String address;
 
+    private String domain;
 }
