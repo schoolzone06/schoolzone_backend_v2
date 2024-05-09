@@ -18,13 +18,13 @@ public class CommandUserService {
     private final UserCreator userCreator;
     private final UserUpdater userUpdater;
 
-    public Long saveUser(User user) {
-        return userCreator.create(user).getId();
+    public Long save(User user) {
+        return userCreator.save(user).getId();
     }
 
     public Long verify(Long userId) {
         User user = userReader.findById(userId);
         userUpdater.verify(user);
-        return saveUser(user);
+        return save(user);
     }
 }
