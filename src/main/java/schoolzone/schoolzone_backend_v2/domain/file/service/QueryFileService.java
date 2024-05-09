@@ -8,8 +8,6 @@ import schoolzone.schoolzone_backend_v2.domain.file.implementation.FileReader;
 import schoolzone.schoolzone_backend_v2.domain.file.presentation.dto.response.FileResponseDto;
 
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 @Service
 @RequiredArgsConstructor
