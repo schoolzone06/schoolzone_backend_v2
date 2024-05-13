@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import schoolzone.schoolzone_backend_v2.domain.post.domain.enums.Category;
 import schoolzone.schoolzone_backend_v2.domain.post.presentation.dto.request.PostUpdateRequestDto;
+import schoolzone.schoolzone_backend_v2.domain.user.domain.User;
 import schoolzone.schoolzone_backend_v2.global.entity.BaseTimeEntity;
 
 @Builder
@@ -18,9 +19,6 @@ public class Post extends BaseTimeEntity {
     private Long id;
 
     @Column(nullable = false)
-    private Long authorId;
-
-    @Column(nullable = false)
     private String title;
 
     @Column(nullable = false, length = 5000)
@@ -30,10 +28,12 @@ public class Post extends BaseTimeEntity {
     @Enumerated(EnumType.STRING)
     private Category category;
 
-    public Post update(PostUpdateRequestDto dto) {
-        this.title = dto.title();
-        this.content = dto.content();
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 
-        return this;
+    public void update(Post post) {
+        this.title = post.getTitle();
+        this.content = post.getContent();
     }
 }

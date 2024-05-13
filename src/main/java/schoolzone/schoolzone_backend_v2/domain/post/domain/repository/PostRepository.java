@@ -1,4 +1,4 @@
-package schoolzone.schoolzone_backend_v2.domain.post.repository;
+package schoolzone.schoolzone_backend_v2.domain.post.domain.repository;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

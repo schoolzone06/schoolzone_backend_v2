@@ -10,7 +10,7 @@ import schoolzone.schoolzone_backend_v2.domain.comment.presentation.dto.response
 import schoolzone.schoolzone_backend_v2.domain.comment.service.implement.CommentGetService;
 import schoolzone.schoolzone_backend_v2.domain.comment.service.implement.CommentSaveService;
 import schoolzone.schoolzone_backend_v2.domain.comment.service.util.CommentUtil;
-import schoolzone.schoolzone_backend_v2.domain.post.application.PostService;
+import schoolzone.schoolzone_backend_v2.domain.post.service.QueryPostService;
 import schoolzone.schoolzone_backend_v2.domain.user.service.UserService;
 
 @Service
@@ -21,7 +21,7 @@ public class CommentService {
     private final CommentSaveService commentSaveService;
     private final CommentUtil commentUtil;
     private final UserService userService;
-    private final PostService postService;
+    private final QueryPostService queryPostService;
 
     public Page<CommentListResponseDto> findByPostId(Long postId, int index, int count) {
         return commentGetService.findByPostId(postId, index, count);
@@ -33,7 +33,7 @@ public class CommentService {
 
     public Long create(CommentCreateRequestDto dto) {
         Long userId = userService.findCurrentUser().getId();
-        Long postAuthorId = postService.findPostDetail(dto.postId()).getAuthorId();
+        Long postAuthorId = queryPostService.findPostDetail(dto.postId()).getAuthorId();
         Long commentCount = commentUtil.commentCount(userId, dto.postId());
         String nickname = commentUtil.generateNickname(userId, postAuthorId, commentCount);
 

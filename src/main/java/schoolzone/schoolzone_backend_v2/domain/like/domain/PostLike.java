@@ -1,4 +1,4 @@
-package schoolzone.schoolzone_backend_v2.domain.post.like.domain;
+package schoolzone.schoolzone_backend_v2.domain.like.domain;
 
 import jakarta.persistence.*;
 import lombok.*;

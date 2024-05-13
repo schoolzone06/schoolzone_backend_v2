@@ -1,10 +1,10 @@
-package schoolzone.schoolzone_backend_v2.domain.post.like.service;
+package schoolzone.schoolzone_backend_v2.domain.like.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import schoolzone.schoolzone_backend_v2.domain.post.like.domain.PostLike;
-import schoolzone.schoolzone_backend_v2.domain.post.like.repository.PostLikeRepository;
+import schoolzone.schoolzone_backend_v2.domain.like.domain.PostLike;
+import schoolzone.schoolzone_backend_v2.domain.like.repository.PostLikeRepository;
 import schoolzone.schoolzone_backend_v2.domain.user.service.UserService;
 
 @Service

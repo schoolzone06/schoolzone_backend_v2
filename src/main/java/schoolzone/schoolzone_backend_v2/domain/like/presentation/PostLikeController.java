@@ -1,8 +1,8 @@
-package schoolzone.schoolzone_backend_v2.domain.post.like.presentation;
+package schoolzone.schoolzone_backend_v2.domain.like.presentation;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import schoolzone.schoolzone_backend_v2.domain.post.like.service.PostLikeService;
+import schoolzone.schoolzone_backend_v2.domain.like.service.PostLikeService;
 
 @RestController
 @RequestMapping("/post")
