@@ -9,7 +9,7 @@ import schoolzone.schoolzone_backend_v2.domain.comment.reply.presentation.dto.re
 import schoolzone.schoolzone_backend_v2.domain.comment.reply.repository.ReplyRepository;
 import schoolzone.schoolzone_backend_v2.domain.comment.service.CommentService;
 import schoolzone.schoolzone_backend_v2.domain.comment.service.util.CommentUtil;
-import schoolzone.schoolzone_backend_v2.domain.post.service.PostService;
+import schoolzone.schoolzone_backend_v2.domain.post.service.QueryPostService;
 import schoolzone.schoolzone_backend_v2.domain.user.service.UserService;
 
 @Service
@@ -21,12 +21,12 @@ public class ReplySaveService {
     private final UserService userService;
     private final CommentService commentService;
     private final CommentUtil commentUtil;
-    private final PostService postService;
+    private final QueryPostService queryPostService;
 
     public Long create(ReplyCreateRequestDto dto) {
         Long userId = userService.findCurrentUser().getId();
         Long postId = commentService.findByCommentId(dto.commentId()).getPostId();
-        Long postAuthorId = postService.findPostDetail(postId).getAuthorId();
+        Long postAuthorId = queryPostService.findPostDetail(postId).getAuthorId();
         Long commentCount = commentUtil.commentCount(userId, postId);
         String nickname = commentUtil.generateNickname(userId, postAuthorId, commentCount);
         return save(dto.toEntity(userId, nickname)).getId();
