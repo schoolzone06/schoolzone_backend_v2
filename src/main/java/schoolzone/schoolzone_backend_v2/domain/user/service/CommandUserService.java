@@ -6,7 +6,6 @@ import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import schoolzone.schoolzone_backend_v2.domain.user.domain.User;
 import schoolzone.schoolzone_backend_v2.domain.user.implementation.UserCreator;
-import schoolzone.schoolzone_backend_v2.domain.user.implementation.UserReader;
 import schoolzone.schoolzone_backend_v2.domain.user.implementation.UserUpdater;
 
 @Service

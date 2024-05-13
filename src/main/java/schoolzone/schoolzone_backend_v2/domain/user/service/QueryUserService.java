@@ -4,7 +4,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
-import schoolzone.schoolzone_backend_v2.domain.user.domain.User;
 import schoolzone.schoolzone_backend_v2.domain.user.implementation.UserReader;
 
 @Service
