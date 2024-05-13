@@ -1,10 +1,10 @@
-package schoolzone.schoolzone_backend_v2.domain.post.application;
+package schoolzone.schoolzone_backend_v2.domain.post.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
-import schoolzone.schoolzone_backend_v2.domain.post.application.implement.PostGetService;
-import schoolzone.schoolzone_backend_v2.domain.post.application.implement.PostSaveService;
+import schoolzone.schoolzone_backend_v2.domain.post.implementation.PostGetService;
+import schoolzone.schoolzone_backend_v2.domain.post.implementation.PostSaveService;
 import schoolzone.schoolzone_backend_v2.domain.post.domain.Post;
 import schoolzone.schoolzone_backend_v2.domain.post.domain.enums.Category;
 import schoolzone.schoolzone_backend_v2.domain.post.presentation.dto.request.PostCreateRequestDto;

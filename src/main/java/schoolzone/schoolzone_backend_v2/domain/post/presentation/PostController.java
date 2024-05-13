@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import schoolzone.schoolzone_backend_v2.domain.post.application.PostService;
+import schoolzone.schoolzone_backend_v2.domain.post.service.PostService;
 import schoolzone.schoolzone_backend_v2.domain.post.domain.Post;
 import schoolzone.schoolzone_backend_v2.domain.post.domain.enums.Category;
 import schoolzone.schoolzone_backend_v2.domain.post.presentation.dto.request.PostCreateRequestDto;

@@ -9,7 +9,7 @@ import schoolzone.schoolzone_backend_v2.domain.comment.reply.presentation.dto.re
 import schoolzone.schoolzone_backend_v2.domain.comment.reply.repository.ReplyRepository;
 import schoolzone.schoolzone_backend_v2.domain.comment.service.CommentService;
 import schoolzone.schoolzone_backend_v2.domain.comment.service.util.CommentUtil;
-import schoolzone.schoolzone_backend_v2.domain.post.application.PostService;
+import schoolzone.schoolzone_backend_v2.domain.post.service.PostService;
 import schoolzone.schoolzone_backend_v2.domain.user.service.UserService;
 
 @Service

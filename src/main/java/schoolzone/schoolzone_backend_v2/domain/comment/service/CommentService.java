@@ -10,7 +10,7 @@ import schoolzone.schoolzone_backend_v2.domain.comment.presentation.dto.response
 import schoolzone.schoolzone_backend_v2.domain.comment.service.implement.CommentGetService;
 import schoolzone.schoolzone_backend_v2.domain.comment.service.implement.CommentSaveService;
 import schoolzone.schoolzone_backend_v2.domain.comment.service.util.CommentUtil;
-import schoolzone.schoolzone_backend_v2.domain.post.application.PostService;
+import schoolzone.schoolzone_backend_v2.domain.post.service.PostService;
 import schoolzone.schoolzone_backend_v2.domain.user.service.UserService;
 
 @Service
