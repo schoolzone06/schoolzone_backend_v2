@@ -9,7 +9,7 @@ import schoolzone.schoolzone_backend_v2.global.annotation.Implementation;
 public class PostDeleter {
     private final PostRepository postRepository;
 
-    public void delete(Long postId) {
+    public void deleteById(Long postId) {
         postRepository.deleteById(postId);
     }
 }

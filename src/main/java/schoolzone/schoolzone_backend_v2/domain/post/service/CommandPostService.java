@@ -25,6 +25,6 @@ public class CommandPostService {
     }
 
     public void delete(Long postId) {
-        postDeleter.delete(postId);
+        postDeleter.deleteById(postId);
     }
 }

@@ -16,7 +16,7 @@ public class CommandPostController {
     private final CommandPostService commandPostService;
 
     @PostMapping
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseStatus(HttpStatus.CREATED)
     public void create(@RequestBody PostCreateRequestDto dto) {
         commandPostService.create(dto.toEntity(SecurityUtil.getUser()));
     }
