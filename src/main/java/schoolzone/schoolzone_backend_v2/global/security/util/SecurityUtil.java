@@ -1,5 +1,7 @@
 package schoolzone.schoolzone_backend_v2.global.security.util;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import schoolzone.schoolzone_backend_v2.domain.user.domain.User;
@@ -7,9 +9,10 @@ import schoolzone.schoolzone_backend_v2.global.error.exception.ErrorCode;
 import schoolzone.schoolzone_backend_v2.global.error.exception.SchoolzoneException;
 import schoolzone.schoolzone_backend_v2.global.security.auth.AuthDetails;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class SecurityUtil {
 
-	private static User getUser() {
+	public static User getUser() {
 
 		Object principal = SecurityContextHolder.getContext()
 			.getAuthentication()

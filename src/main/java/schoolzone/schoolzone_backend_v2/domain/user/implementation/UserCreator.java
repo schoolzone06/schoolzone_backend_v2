@@ -11,10 +11,6 @@ public class UserCreator {
 
 	private final UserRepository userRepository;
 
-	public User createUserEntity(String email) {
-		return User.createUnverifiedUser(email);
-	}
-
 	public User save(User user) {
 		return userRepository.save(user);
 	}

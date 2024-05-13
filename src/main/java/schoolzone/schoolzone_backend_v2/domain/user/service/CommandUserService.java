@@ -14,7 +14,6 @@ import schoolzone.schoolzone_backend_v2.domain.user.implementation.UserUpdater;
 @RequiredArgsConstructor
 public class CommandUserService {
 
-    private final UserReader userReader;
     private final UserCreator userCreator;
     private final UserUpdater userUpdater;
 
@@ -22,9 +21,7 @@ public class CommandUserService {
         return userCreator.save(user).getId();
     }
 
-    public Long verify(Long userId) {
-        User user = userReader.findById(userId);
-        userUpdater.verify(user);
-        return save(user);
+    public void updateNickname(String nickname, User user) {
+        userUpdater.updateNickname(user, nickname);
     }
 }

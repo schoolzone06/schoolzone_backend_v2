@@ -26,4 +26,8 @@ public class UserReader {
 		return userRepository.findByEmail(email)
 			.orElseThrow(() -> new SchoolzoneException(ErrorCode.USER_NOT_FOUND));
 	}
+
+	public Boolean existsByNickname(String nickname) {
+		return userRepository.existsByNickname(nickname);
+	}
 }
